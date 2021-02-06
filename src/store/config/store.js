@@ -3,8 +3,7 @@ import thunk from "redux-thunk";
 import reducers from "../reducers";
 
 const logger = store => next => action => {
-  console.log(action);
-  let result = next(action)
+  let result = next(action);
   return result
 }
 

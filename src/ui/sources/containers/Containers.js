@@ -8,30 +8,31 @@ import IconImageCompany from './../icons/IconImageCompany';
 ///////////////////////////
 /* Container */
 
-export const ContainerUserLayout = (props) => {
+export const ContainerView = (props) => {
+
+  const ContainerScroll = styled.ScrollView`
+    padding: 20px;
+  `;
+
+  const ContainerView = styled.View`
+    flex: 1;
+    width: 100%;
+  `;
+
   return (
     <ContainerView
       style={{
-        backgroundColor: 'red'
+        backgroundColor: '#ffffff',
       }}
       >
       <ContainerScroll
         style={{
           flex: 1,
-          padding: 20
+          padding: 20,
         }}>
         {props.children}
+        <View style={{height: 30}}></View>
       </ContainerScroll>
-      <View
-        style={{
-          position: 'absolute',
-          left: 0,
-          bottom: 0,
-          width: '100%',
-          padding: 10,
-        }}>
-          {props.footer}
-      </View>
     </ContainerView>
   );
 }
