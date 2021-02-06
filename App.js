@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { LogBox } from "react-native";
+import { Provider } from 'react-redux';
+import getStore from './src/store/config/store';
 
 import { NavigationContainer } from "@react-navigation/native";
 
@@ -7,15 +9,21 @@ import NavigatorPublic from "./src/navigation/NavigationPublic";
 import NavigationPrivate from "./src/navigation/NavigationPrivate";
 
 // Remove Yellow Notifications
-LogBox.ignoreAllLogs("");
+LogBox.ignoreAllLogs('');
 
+let store = getStore();
 
 const App = () => {
-  const logged = true;
+  const [user, setUser] = useState();
+
+  const isLoggedIn = false;
+
   return (
-    <NavigationContainer>
-      {logged ? (<NavigationPrivate />):(<NavigatorPublic />)}
-    </NavigationContainer>
+    <Provider store={store}>
+      <NavigationContainer>
+        {isLoggedIn ? (<NavigationPrivate />) : (<NavigatorPublic />)}
+      </NavigationContainer>
+    </Provider>
   );
 }
 export default App;
